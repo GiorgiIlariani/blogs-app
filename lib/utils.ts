@@ -5,7 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-
  export const fetchCategories = async () => {
     try {
       const response = await fetch(
@@ -26,3 +25,8 @@ export function cn(...inputs: ClassValue[]) {
       throw error;
     }
 };
+
+export const handleError = (error: unknown) => {
+  console.error(error)
+  throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
+}
